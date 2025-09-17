@@ -26,15 +26,16 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-text);
-            background-color: var(--cream);
-            padding-top: 60px; /* Reduced from 80px */
-        }
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f9f9f9;
+            background: linear-gradient(135deg, #4a90e2, #7b4397);
+            background-attachment: fixed;
+                }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
@@ -87,16 +88,15 @@
         }
 
         /* Header Styles - REDUCED HEIGHT */
-        header {
-            background-color: var(--jungle-green);
-            color: var(--light-text);
-            padding: 0.6rem 0; /* Reduced from 1rem */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow);
+                header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .header-container {
@@ -120,22 +120,25 @@
             font-weight: 600;
         }
 
-        .nav-menu {
+                .nav-menu {
             display: flex;
-            list-style: none;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            border-radius: 0 0 15px 15px;
         }
 
         .nav-menu li {
             margin-left: 1.2rem; /* Reduced from 1.5rem */
         }
 
-        .nav-menu a {
-            color: var(--light-text);
+                .nav-menu a {
+            color: #fff;
+            padding: 12px 18px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem; /* Slightly smaller */
-            transition: var(--transition);
-            position: relative;
+            transition: all 0.3s ease;
         }
 
         .nav-menu a::after {
@@ -150,7 +153,8 @@
         }
 
         .nav-menu a:hover::after {
-            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
         }
 
         .hamburger {
@@ -161,12 +165,13 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
-            height: 70vh; /* Reduced from 80vh */
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--light-text);
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .hero-content {
@@ -660,7 +665,7 @@
     <section id="home" class="hero">
         <div class="container hero-content">
             <h2>Welcome to LINK Training College</h2>
-            <p>Excellence in Education Since 2005</p>
+            <p>Oasis of Excellence</p>
             <div class="hero-btns">
                 <a href="#programs" class="btn">Explore Our Programs</a>
                 <a href="#contact" class="btn">Apply Now</a>
@@ -676,7 +681,7 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>LINK Training College has been a pioneer in providing quality education and training for over 15 years. Our institution is committed to nurturing future leaders through innovative teaching methods and a comprehensive curriculum.</p>
+                    <p>LINK Training College has been a pioneer in providing quality education and training for over 5 years. Our institution is committed to nurturing future leaders through innovative teaching methods and a comprehensive curriculum.</p>
                     <p>We pride ourselves on creating a supportive learning environment that encourages critical thinking, creativity, and personal growth. Our experienced faculty members are dedicated to helping students achieve their academic and professional goals.</p>
                     <p>At LINK Training College, we believe in education that transforms lives and communities. Join us on this journey of knowledge and discovery.</p>
                 </div>
@@ -708,7 +713,7 @@
     <section id="programs" class="section programs">
         <div class="container">
             <div class="section-title">
-                <h2>Our Programs</h2>
+                <h2>Our Schools</h2>
             </div>
             <div class="programs-grid">
                 <div class="program-card">
@@ -736,7 +741,7 @@
                         <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80" alt="Health Sciences">
                     </div>
                     <div class="program-content">
-                        <h3>Health Sciences</h3>
+                        <h3>Health</h3>
                         <p>Programs designed for healthcare professionals, including nursing, pharmacy, and public health studies.</p>
                         <a href="#" class="btn">Learn More</a>
                     </div>
