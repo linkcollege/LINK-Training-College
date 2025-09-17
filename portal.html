@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINK Training College - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --jungle-green: #26A65B;
+            --sky-blue: #87CEEB;
+            --cream: #F5F5DC;
+            --maroon: #800000;
+            --dark-text: #333333;
+            --light-text: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--cream);
+            padding-top: 80px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--maroon);
+            color: var(--light-text);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--jungle-green);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--sky-blue);
+            color: var(--dark-text);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--jungle-green);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sky-blue);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-menu span {
+            margin-right: 1rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--sky-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Portal Container */
+        .portal-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: var(--jungle-green);
+            color: var(--light-text);
+            padding: 2rem 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 2.5rem;
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background: var(--light-text);
+        }
+
+        .welcome-banner {
+            background: linear-gradient(to right, var(--jungle-green), var(--sky-blue));
+            color: var(--light-text);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashboard-card i {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--maroon);
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background: var(--cream);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-header {
+            padding: 1rem;
+            background: var(--jungle-green);
+            color: var(--light-text);
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-progress {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--jungle-green);
+            border-radius: 5px;
+        }
+
+        /* Grades Table */
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .grades-table th, .grades-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .grades-table th {
+            background: var(--jungle-green);
+            color: var(--light-text);
+        }
+
+        .grades-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .portal-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding: 1rem 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+            }
+            
+            .sidebar-menu li {
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+            
+            .sidebar-menu a {
+                padding: 0.5rem 1rem;
+                white-space: nowrap;
+            }
+            
+            .sidebar-menu a:hover, .sidebar-menu a.active {
+                padding-left: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            .nav-menu {
+                margin-top: 1rem;
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzI2QTY1QiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSIjRkZGIj5MPC90ZXh0Pjwvc3ZnPg==" alt="LINK Training College Logo">
+                <h1>LINK Training College</h1>
+            </div>
+            <div class="hamburger">☰</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#news">News</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="portal.html" class="active">Student Portal</a></li>
+            </ul>
+            <div class="user-menu">
+                <span>John Doe</span>
+                <div class="avatar">JD</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portal Container -->
+    <div class="portal-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Grades</a></li>
+                <li><a href="#"><i class="fas fa-calendar"></i> Schedule</a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> Assignments</a></li>
+                <li><a href="#"><i class="fas fa-file-invoice"></i> Financial</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="welcome-banner">
+                <h2>Welcome back, John!</h2>
+                <p>You have 3 new announcements and 2 upcoming assignments.</p>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Current Courses</h3>
+                    <p>5 enrolled courses</p>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Assignments Due</h3>
+                    <p>2 assignments this week</p>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Overall GPA</h3>
+                    <p>3.8 / 4.0</p>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-calendar"></i>
+                    <h3>Upcoming Events</h3>
+                    <p>3 events this month</p>
+                </div>
+            </div>
+
+            <h2>My Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Business Administration 101</h3>
+                        <p>Prof. Johnson</p>
+                    </div>
+                    <div class="course-body">
+                        <p>Introduction to Business Management principles and practices.</p>
+                        <div class="course-progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                        <p>75% Complete</p>
+                        <a href="#" class="btn btn-secondary">Continue</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Data Structures & Algorithms</h3>
+                        <p>Dr. Chen</p>
+                    </div>
+                    <div class="course-body">
+                        <p>Advanced programming concepts and algorithm analysis.</p>
+                        <div class="course-progress">
+                            <div class="progress-bar" style="width: 60%"></div>
+                        </div>
+                        <p>60% Complete</p>
+                        <a href="#" class="btn btn-secondary">Continue</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Statistics for Research</h3>
+                        <p>Dr. Williams</p>
+                    </div>
+                    <div class="course-body">
+                        <p>Statistical methods and data analysis techniques.</p>
+                        <div class="course-progress">
+                            <div class="progress-bar" style="width: 85%"></div>
+                        </div>
+                        <p>85% Complete</p>
+                        <a href="#" class="btn btn-secondary">Continue</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Recent Grades</h2>
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Assignment</th>
+                        <th>Due Date</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Business Administration 101</td>
+                        <td>Market Analysis Report</td>
+                        <td>Oct 15, 2023</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Data Structures & Algorithms</td>
+                        <td>Binary Trees Implementation</td>
+                        <td>Oct 12, 2023</td>
+                        <td>A-</td>
+                    </tr>
+                    <tr>
+                        <td>Statistics for Research</td>
+                        <td>Hypothesis Testing Quiz</td>
+                        <td>Oct 10, 2023</td>
+                        <td>B+</td>
+                    </tr>
+                    <tr>
+                        <td>Business Administration 101</td>
+                        <td>Leadership Case Study</td>
+                        <td>Oct 5, 2023</td>
+                        <td>A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+           
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+           
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Sidebar menu active state
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    sidebarLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
