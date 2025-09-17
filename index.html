@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LINK Training College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Color Variables for Easy Customization */
+        /* Color Variables */
         :root {
             --jungle-green: #26A65B;
             --sky-blue: #87CEEB;
@@ -13,6 +14,8 @@
             --maroon: #800000;
             --dark-text: #333333;
             --light-text: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         /* Global Styles */
@@ -27,6 +30,7 @@
             line-height: 1.6;
             color: var(--dark-text);
             background-color: var(--cream);
+            padding-top: 80px;
         }
 
         .container {
@@ -36,95 +40,6 @@
             padding: 0 15px;
         }
 
-        /* Header Styles */
-        header {
-            background-color: var(--jungle-green);
-            color: var(--light-text);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-menu li {
-            margin-left: 1.5rem;
-        }
-
-        .nav-menu a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--sky-blue);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/random/1600x900/?college') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--light-text);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--maroon);
-            color: var(--light-text);
-            padding: 0.8rem 1.8rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: opacity 0.3s;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Section Common Styles */
         .section {
             padding: 5rem 0;
         }
@@ -152,6 +67,136 @@
             background: var(--jungle-green);
         }
 
+        .btn {
+            display: inline-block;
+            background: var(--maroon);
+            color: var(--light-text);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--jungle-green);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--sky-blue);
+            color: var(--dark-text);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--jungle-green);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sky-blue);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .hero-btns {
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+
         /* About Section */
         .about-content {
             display: flex;
@@ -165,6 +210,10 @@
             min-width: 300px;
         }
 
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
         .about-image {
             flex: 1;
             min-width: 300px;
@@ -173,7 +222,33 @@
         .about-image img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-text);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--jungle-green);
+            margin-bottom: 1rem;
         }
 
         /* Programs Section */
@@ -191,12 +266,28 @@
             background: var(--light-text);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .program-card:hover {
             transform: translateY(-10px);
+        }
+
+        .program-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
         }
 
         .program-content {
@@ -219,7 +310,23 @@
             background: var(--light-text);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .news-content {
@@ -236,6 +343,76 @@
             font-size: 0.9rem;
             margin-bottom: 1rem;
             display: block;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--sky-blue);
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: var(--light-text);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--maroon);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--jungle-green);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--light-text);
+            margin: 0 5px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            opacity: 1;
+            background: var(--maroon);
         }
 
         /* Contact Section */
@@ -265,6 +442,13 @@
 
         .contact-details p {
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--maroon);
         }
 
         .form-group {
@@ -294,8 +478,7 @@
         footer {
             background-color: var(--jungle-green);
             color: var(--light-text);
-            padding: 2rem 0;
-            text-align: center;
+            padding: 3rem 0 1rem;
         }
 
         .footer-content {
@@ -338,11 +521,12 @@
         .footer-links a {
             color: var(--light-text);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
             color: var(--sky-blue);
+            padding-left: 5px;
         }
 
         .social-links {
@@ -352,60 +536,259 @@
         }
 
         .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
             color: var(--light-text);
-            font-size: 1.5rem;
-            transition: color 0.3s;
+            border-radius: 50%;
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            color: var(--sky-blue);
+            background: var(--sky-blue);
+            transform: translateY(-3px);
         }
 
         .copyright {
             padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        /* Student Portal Styles */
+        .portal-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--jungle-green);
+            color: var(--light-text);
+            padding: 2rem 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 2.5rem;
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background: var(--light-text);
+        }
+
+        .welcome-banner {
+            background: linear-gradient(to right, var(--jungle-green), var(--sky-blue));
+            color: var(--light-text);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashboard-card i {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--maroon);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background: var(--cream);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-header {
+            padding: 1rem;
+            background: var(--jungle-green);
+            color: var(--light-text);
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-progress {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--jungle-green);
+            border-radius: 5px;
+        }
+
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .grades-table th, .grades-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .grades-table th {
+            background: var(--jungle-green);
+            color: var(--light-text);
+        }
+
+        .grades-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Login Form */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, var(--jungle-green), var(--sky-blue));
+            padding: 2rem;
+        }
+
+        .login-form {
+            background: var(--light-text);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--maroon);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .portal-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding: 1rem 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+            }
+            
+            .sidebar-menu li {
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+            
+            .sidebar-menu a {
+                padding: 0.5rem 1rem;
+                white-space: nowrap;
+            }
+            
+            .sidebar-menu a:hover, .sidebar-menu a.active {
+                padding-left: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
             .header-container {
                 flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
             }
 
             .nav-menu {
                 margin-top: 1rem;
-            }
-
-            .nav-menu li {
-                margin: 0 0.5rem;
-            }
-
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 3rem 0;
-            }
-        }
-
-        /* Hamburger Menu for Mobile */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        @media (max-width: 600px) {
-            .hamburger {
-                display: block;
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                font-size: 1.5rem;
-                color: var(--light-text);
-            }
-
-            .nav-menu {
                 flex-direction: column;
                 width: 100%;
                 display: none;
@@ -417,7 +800,27 @@
 
             .nav-menu li {
                 margin: 0.5rem 0;
-                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-btns .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
             }
         }
     </style>
@@ -427,6 +830,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzI2QTY1QiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSIjRkZGIj5MPC90ZXh0Pjwvc3ZnPg==" alt="LINK Training College Logo">
                 <h1>LINK Training College</h1>
             </div>
             <div class="hamburger">☰</div>
@@ -435,190 +839,444 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#programs">Programs</a></li>
                 <li><a href="#news">News</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="portal-link">Student Portal</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h2>Welcome to LINK Training College</h2>
-            <p>Oasis of Excellence</p>
-            <a href="#programs" class="btn">Explore Our Programs</a>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h2>Welcome to LINK Training College</h2>
+                <p>Excellence in Education Since 2005</p>
+                <div class="hero-btns">
+                    <a href="#programs" class="btn">Explore Our Programs</a>
+                    <a href="#contact" class="btn">Apply Now</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>LINK Training College has been a pioneer in providing quality education and training for over 5 years and counting. Our institution is committed to nurturing future leaders through innovative teaching methods and a comprehensive curriculum.</p>
-                    <p>We pride ourselves on creating a supportive learning environment that encourages critical thinking, creativity, and personal growth. Our experienced faculty members are dedicated to helping students achieve their academic and professional goals.</p>
-                    <p>At LINK Training College, we believe in education that transforms lives and communities. Join us on this journey of knowledge and discovery.</p>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Us</h2>
                 </div>
-                <div class="about-image">
-                    <img src="https://source.unsplash.com/random/600x400/?campus" alt="LINK Training College Campus">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>LINK Training College has been a pioneer in providing quality education and training for over 15 years. Our institution is committed to nurturing future leaders through innovative teaching methods and a comprehensive curriculum.</p>
+                        <p>We pride ourselves on creating a supportive learning environment that encourages critical thinking, creativity, and personal growth. Our experienced faculty members are dedicated to helping students achieve their academic and professional goals.</p>
+                        <p>At LINK Training College, we believe in education that transforms lives and communities. Join us on this journey of knowledge and discovery.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="LINK Training College Campus">
+                    </div>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Quality Education</h3>
+                        <p>Our programs are designed to meet the highest academic standards.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <h3>Expert Faculty</h3>
+                        <p>Learn from industry professionals and experienced educators.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Modern Facilities</h3>
+                        <p>State-of-the-art classrooms and resources for optimal learning.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Programs Section -->
-    <section id="programs" class="section programs">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Programs</h2>
-            </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-content">
-                        <h3>Business Administration</h3>
-                        <p>Comprehensive business education covering management, finance, marketing, and entrepreneurship to prepare students for leadership roles.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+        <!-- Programs Section -->
+        <section id="programs" class="section programs">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Programs</h2>
                 </div>
-                <div class="program-card">
-                    <div class="program-content">
-                        <h3>Information Technology</h3>
-                        <p>Cut-edge IT programs focusing on software development, cybersecurity, data science, and network administration.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="program-content">
-                        <h3>Health Sciences</h3>
-                        <p>Programs designed for healthcare professionals, including nursing, pharmacy, and public health studies.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Latest News</h2>
-            </div>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-content">
-                        <span class="news-date">June 15, 2023</span>
-                        <h3>New Campus Opening</h3>
-                        <p>We're excited to announce the opening of our new state-of-the-art campus in the city center next semester.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-content">
-                        <span class="news-date">May 28, 2023</span>
-                        <h3>Annual Research Symposium</h3>
-                        <p>Join us for our annual research symposium showcasing innovative projects from our students and faculty.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-content">
-                        <span class="news-date">April 10, 2023</span>
-                        <h3>Scholarship Opportunities</h3>
-                        <p>Applications are now open for merit-based scholarships for the upcoming academic year.</p>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-details">
-                        <p><strong>Address:</strong> 88 Marsabit, Knowledge City</p>
-                        <p><strong>Phone:</strong>+254 706124127</p>
-                        <p><strong>Email:</strong>link@lifewaymi.org</p>
-                        <p><strong>Hours:</strong> Monday-Friday: 8am-5pm</p>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Business Administration">
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
+                        <div class="program-content">
+                            <h3>Business Administration</h3>
+                            <p>Comprehensive business education covering management, finance, marketing, and entrepreneurship to prepare students for leadership roles.</p>
+                            <a href="#" class="btn">Learn More</a>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="program-card">
+                        <div class="program-img">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Information Technology">
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                        <div class="program-content">
+                            <h3>Information Technology</h3>
+                            <p>Cutting-edge IT programs focusing on software development, cybersecurity, data science, and network administration.</p>
+                            <a href="#" class="btn">Learn More</a>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                    </div>
+                    <div class="program-card">
+                        <div class="program-img">
+                            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80" alt="Health Sciences">
+                        </div>
+                        <div class="program-content">
+                            <h3>Health Sciences</h3>
+                            <p>Programs designed for healthcare professionals, including nursing, pharmacy, and public health studies.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#programs">Programs</a></li>
-                        <li><a href="#news">News</a></li>
-                        <li><a href="#contact">Contact</a></li>
+        <!-- News Section -->
+        <section id="news" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Latest News</h2>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1569163139394-de44aa9a21bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="New Campus Opening">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">June 15, 2023</span>
+                            <h3>New Campus Opening</h3>
+                            <p>We're excited to announce the opening of our new state-of-the-art campus in the city center next semester.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Research Symposium">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">May 28, 2023</span>
+                            <h3>Annual Research Symposium</h3>
+                            <p>Join us for our annual research symposium showcasing innovative projects from our students and faculty.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Scholarship Opportunities">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">April 10, 2023</span>
+                            <h3>Scholarship Opportunities</h3>
+                            <p>Applications are now open for merit-based scholarships for the upcoming academic year.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Students Say</h2>
+                </div>
+                <div class="testimonials-container">
+                    <div class="testimonial active">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Student">
+                        <p class="testimonial-quote">"LINK Training College provided me with the skills and confidence to excel in my career. The faculty is supportive and the curriculum is industry-relevant."</p>
+                        <p class="testimonial-author">Sarah Johnson</p>
+                        <p class="testimonial-role">Business Administration Graduate</p>
+                    </div>
+                    <div class="testimonial">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student">
+                        <p class="testimonial-quote">"The hands-on learning approach at LINK prepared me for real-world challenges. I landed a job even before graduation!"</p>
+                        <p class="testimonial-author">Michael Chen</p>
+                        <p class="testimonial-role">Information Technology Graduate</p>
+                    </div>
+                    <div class="testimonial">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student">
+                        <p class="testimonial-quote">"The supportive community and excellent facilities at LINK made my learning experience exceptional. I would highly recommend this college."</p>
+                        <p class="testimonial-author">Priya Sharma</p>
+                        <p class="testimonial-role">Health Sciences Student</p>
+                    </div>
+                    <div class="testimonial-nav">
+                        <div class="testimonial-dot active" data-index="0"></div>
+                        <div class="testimonial-dot" data-index="1"></div>
+                        <div class="testimonial-dot" data-index="2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div class="contact-details">
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 123 Education Street, Knowledge City</p>
+                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> (123) 456-7890</p>
+                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@linktraining.edu</p>
+                            <p><i class="fas fa-clock"></i> <strong>Hours:</strong> Monday-Friday: 8am-5pm</p>
+                        </div>
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.842128112233!2d-73.990184!3d40.756482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzIzLjMiTiA3M8KwNTknMjQuNyJX!5e0!3m2!1sen!2sus!4v1629990000000!5m2!1sen!2sus" width="100%" height="200" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#programs">Programs</a></li>
+                            <li><a href="#news">News</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Programs</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Business Administration</a></li>
+                            <li><a href="#">Information Technology</a></li>
+                            <li><a href="#">Health Sciences</a></li>
+                            <li><a href="#">Continuing Education</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Connect With Us</h3>
+                        <p>Follow us on social media for updates and announcements.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 LINK Training College. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Student Portal Content (Initially Hidden) -->
+    <div id="portal-content" style="display: none;">
+        <!-- Login Form -->
+        <div class="login-container" id="login-form">
+            <div class="login-form">
+                <h2>Student Portal Login</h2>
+                <div class="form-group">
+                    <label for="username">Student ID</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="button" class="btn" id="login-btn">Login</button>
+                <p style="margin-top: 1rem; text-align: center;">
+                    <a href="#" style="color: var(--maroon);">Forgot Password?</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Portal Dashboard (Initially Hidden) -->
+        <div id="portal-dashboard" style="display: none;">
+            <header>
+                <div class="container header-container">
+                    <div class="logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0iIzI2QTY1QiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSIjRkZGIj5MPC90ZXh0Pjwvc3ZnPg==" alt="LINK Training College Logo">
+                        <h1>LINK Training College</h1>
+                    </div>
+                    <div class="hamburger">☰</div>
+                    <ul class="nav-menu">
+                        <li><a href="#" id="back-to-website">Back to Website</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                    <div class="user-menu">
+                        <span id="user-name">John Doe</span>
+                        <div class="avatar">JD</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Portal Container -->
+            <div class="portal-container">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                        <li><a href="#"><i class="fas fa-chart-bar"></i> Grades</a></li>
+                        <li><a href="#"><i class="fas fa-calendar"></i> Schedule</a></li>
+                        <li><a href="#"><i class="fas fa-tasks"></i> Assignments</a></li>
+                        <li><a href="#"><i class="fas fa-file-invoice"></i> Financial</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Business Administration</a></li>
-                        <li><a href="#">Information Technology</a></li>
-                        <li><a href="#">Community Health</a></li>
-                        <li><a href="#">Nutrition and Dietetics</a></li>
-                        <li><a href="#">community Development</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <p>Follow us on social media for updates and announcements.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook">f</i></a>
-                        <a href="#"><i class="fab fa-twitter">t</i></a>
-                        <a href="#"><i class="fab fa-instagram">i</i></a>
-                        <a href="#"><i class="fab fa-tiktok">l</i></a>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                    <div class="welcome-banner">
+                        <h2>Welcome back, <span id="dashboard-user-name">John</span>!</h2>
+                        <p>You have 3 new announcements and 2 upcoming assignments.</p>
                     </div>
+
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Current Courses</h3>
+                            <p>5 enrolled courses</p>
+                        </div>
+                        <div class="dashboard-card">
+                            <i class="fas fa-tasks"></i>
+                            <h3>Assignments Due</h3>
+                            <p>2 assignments this week</p>
+                        </div>
+                        <div class="dashboard-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Overall GPA</h3>
+                            <p>3.8 / 4.0</p>
+                        </div>
+                        <div class="dashboard-card">
+                            <i class="fas fa-calendar"></i>
+                            <h3>Upcoming Events</h3>
+                            <p>3 events this month</p>
+                        </div>
+                    </div>
+
+                    <h2>My Courses</h2>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-header">
+                                <h3>Business Administration 101</h3>
+                                <p>Prof. Johnson</p>
+                            </div>
+                            <div class="course-body">
+                                <p>Introduction to Business Management principles and practices.</p>
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                                <p>75% Complete</p>
+                                <a href="#" class="btn btn-secondary">Continue</a>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-header">
+                                <h3>Data Structures & Algorithms</h3>
+                                <p>Dr. Chen</p>
+                            </div>
+                            <div class="course-body">
+                                <p>Advanced programming concepts and algorithm analysis.</p>
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 60%"></div>
+                                </div>
+                                <p>60% Complete</p>
+                                <a href="#" class="btn btn-secondary">Continue</a>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-header">
+                                <h3>Statistics for Research</h3>
+                                <p>Dr. Williams</p>
+                            </div>
+                            <div class="course-body">
+                                <p>Statistical methods and data analysis techniques.</p>
+                                <div class="course-progress">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                                <p>85% Complete</p>
+                                <a href="#" class="btn btn-secondary">Continue</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Recent Grades</h2>
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Assignment</th>
+                                <th>Due Date</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Business Administration 101</td>
+                                <td>Market Analysis Report</td>
+                                <td>Oct 15, 2023</td>
+                                <td>A</td>
+                            </tr>
+                            <tr>
+                                <td>Data Structures & Algorithms</td>
+                                <td>Binary Trees Implementation</td>
+                                <td>Oct 12, 2023</td>
+                                <td>A-</td>
+                            </tr>
+                            <tr>
+                                <td>Statistics for Research</td>
+                                <td>Hypothesis Testing Quiz</td>
+                                <td>Oct 10, 2023</td>
+                                <td>B+</td>
+                            </tr>
+                            <tr>
+                                <td>Business Administration 101</td>
+                                <td>Leadership Case Study</td>
+                                <td>Oct 5, 2023</td>
+                                <td>A</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 LINK Training College. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+    </div>
 
     <script>
-        // Simple JavaScript for mobile menu toggle
+        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
@@ -634,7 +1292,33 @@
                     navMenu.classList.remove('active');
                 });
             });
-           
+
+            // Testimonial slider
+            const testimonials = document.querySelectorAll('.testimonial');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonials[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    showTestimonial(index);
+                });
+            });
+            
+            // Auto rotate testimonials
+            let currentTestimonial = 0;
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+
             // Form submission handling
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
@@ -644,6 +1328,74 @@
                     contactForm.reset();
                 });
             }
+
+            // Portal functionality
+            const portalLink = document.getElementById('portal-link');
+            const mainContent = document.getElementById('main-content');
+            const portalContent = document.getElementById('portal-content');
+            const loginForm = document.getElementById('login-form');
+            const portalDashboard = document.getElementById('portal-dashboard');
+            const loginBtn = document.getElementById('login-btn');
+            const backToWebsite = document.getElementById('back-to-website');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            // Show portal login when portal link is clicked
+            portalLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainContent.style.display = 'none';
+                portalContent.style.display = 'block';
+                loginForm.style.display = 'flex';
+                portalDashboard.style.display = 'none';
+            });
+            
+            // Login functionality
+            loginBtn.addEventListener('click', function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username && password) {
+                    // Simple demo login - in a real application, this would verify credentials with a server
+                    loginForm.style.display = 'none';
+                    portalDashboard.style.display = 'block';
+                    
+                    // Set the user name in the dashboard
+                    document.getElementById('user-name').textContent = username;
+                    document.getElementById('dashboard-user-name').textContent = username;
+                    
+                    // Set avatar initials
+                    const avatar = document.querySelector('.avatar');
+                    avatar.textContent = username.charAt(0).toUpperCase();
+                } else {
+                    alert('Please enter both Student ID and Password');
+                }
+            });
+            
+            // Back to website functionality
+            backToWebsite.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainContent.style.display = 'block';
+                portalContent.style.display = 'none';
+            });
+            
+            // Logout functionality
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                portalDashboard.style.display = 'none';
+                loginForm.style.display = 'flex';
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            });
+
+            // Sidebar menu active state
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    sidebarLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
         });
     </script>
 </body>
+</html>
